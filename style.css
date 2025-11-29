@@ -20,58 +20,7 @@ body {
     position: relative;
     min-height: 100vh;
 }
-.beam {
-    position: absolute;
-    top: -600px;
-    width: 250px;
-    animation: fall 3s linear forwards;
-  }
 
-  @keyframes fall {
-    0% {
-      top: -600px;
-      opacity: 0.6;
-      transform: scale(0.8);
-    }
-    80% {
-      opacity: 1;
-    }
-    100% {
-      top: 100vh;
-      opacity: 0;
-      transform: scale(1);
-    }
-  }
-
-  /* Rising and glowing full-width circle */
-  .circle {
-    position: absolute;
-    bottom: -500x;
-    padding-top: 50px;
-    width: 100%;
-    opacity: 0;
-    animation: rise 2s ease-out forwards, glow 1s ease-in-out infinite alternate;
-    animation-delay: 3s, 7s; /* rise first, glow starts after it’s up */
-    filter: blur(30px) brightness(1.5);
-  }
-
-  @keyframes rise {
-    0% {
-      bottom: -500px;
-      opacity: 0;
-      transform: scale(1);
-      filter: brightness(1);
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      bottom: 0;
-      opacity: 1;
-      transform: scale(1.1);
-      filter: brightness(2);
-    }
-  }
 
 /* ===============================================
    NAVIGATION
@@ -439,93 +388,105 @@ spline-viewer {
 /* ===============================================
    SERVICE SECTION (UI/UX Designer)
    =============================================== */
+/* SECTION BACKGROUND – dark like image 1 */
 .service-section {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  background: radial-gradient(circle at center, #120533 0%, #070016 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle at center, #1b0a45, #0b0220);
   overflow: hidden;
 }
-/* Wrapper */
-.wrapper {
-  position: relative;
-  text-align: center;
-}
 
-/* Top Text (UIUX) */
+
+/* UIUX text */
 .uiux {
-  font-size: 300px;
-  font-weight: 500px;
-  letter-spacing: 10px;
-  background: linear-gradient(90deg, #ffffff, #bcbcbc, #3a3a3a);
+  font-size: 240px;
+  letter-spacing: 20px;
+  font-weight: 300;
+  background: linear-gradient(90deg, #ffffff, #d0d0d0, #444);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  transition: filter 2s ease-in-out;
+  z-index: 5;
+  .uiux {
+  margin-top: -60px;  /* move UIUX slightly upward */
 }
 
-.uiux span {
-  display: inline-block;
-  transform: skew(-15deg);
 }
 
-/* Designer Text (Hidden initially) */
-.designer {
+
+/* LIGHT – starts OFF (invisible), ON after hover */
+
+.light {
+  
   position: absolute;
-  top: 300px;
+  top: 180px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 100px;
-  font-weight: 700;
-  color: rgba(150, 120, 255, 0);
-  text-shadow: 0 0 0 rgba(130, 90, 255, 0);
-  transition: all 2.5s ease-in-out;
-  opacity: 0;
-}
+  width: 900px;
+  height: 450px;
 
-/* Reflection effect */
-.designer::after {
-  content: "Designer";
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  color: rgba(130, 90, 255, 0.25);
-  transform: scaleY(-1);
-  filter: blur(1px);
-  opacity: 0.5;
-}
-
-/* Tube Light Beam (Under the UIUX text) */
-.light-beam {
-  position: absolute;
-  top: 160px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 280px;
   background: radial-gradient(
     ellipse at top,
-    rgba(140, 90, 255, 0.9) 0%,
-    rgba(120, 80, 255, 0.3) 50%,
+    rgba(110, 45, 255, 1) 0%,
+    rgba(120, 60, 255, 0.8) 40%,
+    rgba(80, 40, 210, 0.4) 65%,
     transparent 100%
   );
-  filter: blur(60px);
+
+  filter: blur(80px);
   opacity: 0;
-  transition: opacity 2s ease-in-out;
-  z-index: -1;
+  transition: opacity 2.2s ease-in-out;
 }
 
-/* Hover Effects */
-.wrapper:hover .light-beam {
+
+/* DESIGNER (invisible at start) */
+.designer {
+  position: absolute;
+  top: 470px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 110px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0);
+  opacity: 0;
+  transition: opacity 2s ease-in-out, color 2s ease-in-out;
+  z-index: 5;
+}
+
+/* Reflection */
+.designer-reflection {
+  position: absolute;
+  top: 590px;
+  left: 50%;
+  transform: translateX(-50%) scaleY(-1);
+  font-size: 110px;
+  font-weight: 700;
+  color: rgba(180, 150, 255, 0);
+  opacity: 0;
+  filter: blur(2px);
+  transition: opacity 2.5s ease-in-out, color 2s ease-in-out;
+}
+
+
+/* HOVER → Everything turns ON */
+.service-section:hover .light {
   opacity: 1;
 }
 
-.wrapper:hover .designer {
-  color: #c8b7ff;
-  text-shadow: 0 0 40px #a787ff, 0 0 80px #6e54ff;
+.service-section:hover .designer {
   opacity: 1;
+  color: rgb(220, 200, 255);
+  text-shadow: 
+      0 0 25px rgba(150, 90, 255, 0.9),
+      0 0 45px rgba(150, 90, 255, 0.7),
+      0 0 90px rgba(150, 90, 255, 0.45);
+}
+
+.service-section:hover .designer-reflection {
+  opacity: 0.35;
+  color: rgba(150, 120, 255, 0.4);
 }
 
 
@@ -1419,3 +1380,4 @@ spline-viewer {
         height: 35px;
     }
 }
+
