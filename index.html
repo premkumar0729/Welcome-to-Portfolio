@@ -53,7 +53,7 @@
   <div class="hero-content">
     <p class="hero-subtitle">PremkumarE</p>
     <h1 class="hero-title">
-      <span class="fusion-text">FUSION MAX</span>
+      <span class="fusion-text">FUSION X</span>
     </h1>
     <h2 class="hero-description">
       <span class="text-white">UI/UX Designer & </span>
@@ -201,7 +201,7 @@
    prem2907nirmala@gmail.com
 </a>
                 <div class="social-links">
-  <a href="https://www.instagram.com/itss.prem2907?igsh=YzBsNGU3OWJ0a2Rl"
+  <a href="https://www.instagram.com/fusion__max?igsh=OG82MXNycm13dml5"
      target="_blank"
      rel="noopener noreferrer"
      class="social-icon">
@@ -374,6 +374,61 @@ document.addEventListener("DOMContentLoaded", () => {
   container.addEventListener('dragstart', (e) => e.preventDefault());
 })();
 </script>
+<script>
+const carousel = document.querySelector(".carousel-track");
+
+let angle = 0;
+let autoRotate = true;
+let startX = 0;
+let currentX = 0;
+let dragging = false;
+let rotationSpeed = 0.5; // default speed
+
+// Auto rotation
+function rotateCarousel() {
+  if (autoRotate) {
+    angle += rotationSpeed;
+    carousel.style.transform = `translate(-50%, -50%) rotateY(${angle}deg)`;
+  }
+  requestAnimationFrame(rotateCarousel);
+}
+rotateCarousel();
+
+// Start dragging
+function startDrag(x) {
+  autoRotate = false;
+  dragging = true;
+  startX = x;
+}
+
+// While dragging
+function drag(x) {
+  if (!dragging) return;
+  currentX = x;
+  let delta = (currentX - startX) * 0.4; // sensitivity
+  angle += delta;
+  startX = currentX;
+  carousel.style.transform = `translate(-50%, -50%) rotateY(${angle}deg)`;
+}
+
+// Stop dragging
+function stopDrag() {
+  dragging = false;
+  autoRotate = true;
+}
+
+// Desktop mouse events
+carousel.addEventListener("mousedown", (e) => startDrag(e.clientX));
+carousel.addEventListener("mousemove", (e) => drag(e.clientX));
+carousel.addEventListener("mouseup", stopDrag);
+carousel.addEventListener("mouseleave", stopDrag);
+
+// Mobile touch events
+carousel.addEventListener("touchstart", (e) => startDrag(e.touches[0].clientX));
+carousel.addEventListener("touchmove", (e) => drag(e.touches[0].clientX));
+carousel.addEventListener("touchend", stopDrag);
+</script>
+
 <!---C  O  N  T  A  C  T-->
 <script>
   const contactBtn = document.querySelector('.contact-btn');
