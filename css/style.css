@@ -385,10 +385,12 @@ spline-viewer {
     }
 }
 
+
 /* ===============================================
    SERVICE SECTION (UI/UX Designer)
    =============================================== */
 /* SECTION BACKGROUND – dark like image 1 */
+/* SECTION BACKGROUND */
 .service-section {
   position: relative;
   height: 100vh;
@@ -399,33 +401,28 @@ spline-viewer {
   overflow: hidden;
 }
 
-
 /* UIUX text */
 .uiux {
-  font-size: 240px;
-  letter-spacing: 20px;
+  font-size: 18vw;       /* responsive */
+  letter-spacing: 1.2vw;
   font-weight: 300;
   background: linear-gradient(90deg, #ffffff, #d0d0d0, #444);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-top: -5vw;      /* responsive spacing */
   z-index: 5;
-  .uiux {
-  margin-top: -60px;  /* move UIUX slightly upward */
 }
 
-}
-
-
-/* LIGHT – starts OFF (invisible), ON after hover */
-
+/* Light Glow */
 .light {
-  
   position: absolute;
-  top: 180px;
+  top: 18vh;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 450px;
+  width: 80vw;     /* responsive */
+  height: 40vw;    /* responsive */
+  max-width: 900px;
+  max-height: 450px;
 
   background: radial-gradient(
     ellipse at top,
@@ -435,19 +432,18 @@ spline-viewer {
     transparent 100%
   );
 
-  filter: blur(80px);
+  filter: blur(8vw);
   opacity: 0;
   transition: opacity 2.2s ease-in-out;
 }
 
-
-/* DESIGNER (invisible at start) */
+/* DESIGNER text */
 .designer {
   position: absolute;
-  top: 470px;
+  top: 55vh;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 110px;
+  font-size: 9vw;   /* responsive */
   font-weight: 700;
   color: rgba(255, 255, 255, 0);
   opacity: 0;
@@ -458,10 +454,10 @@ spline-viewer {
 /* Reflection */
 .designer-reflection {
   position: absolute;
-  top: 590px;
+  top: 63vh;
   left: 50%;
   transform: translateX(-50%) scaleY(-1);
-  font-size: 110px;
+  font-size: 9vw;
   font-weight: 700;
   color: rgba(180, 150, 255, 0);
   opacity: 0;
@@ -469,8 +465,7 @@ spline-viewer {
   transition: opacity 2.5s ease-in-out, color 2s ease-in-out;
 }
 
-
-/* HOVER → Everything turns ON */
+/* Hover Effects (same) */
 .service-section:hover .light {
   opacity: 1;
 }
@@ -489,8 +484,7 @@ spline-viewer {
   color: rgba(150, 120, 255, 0.4);
 }
 
-
-/* Floating Icons Animation */
+/* Floating Icons */
 .floating-icons {
     position: absolute;
     width: 100%;
@@ -502,45 +496,22 @@ spline-viewer {
 
 .float-icon {
     position: absolute;
-    font-size: 3rem;
-    width: 60px;
-    height: 60px;
+    width: 10vw;
+    height: 10vw;
+    max-width: 60px;
+    max-height: 60px;
     opacity: 0.6;
     animation: float 8s ease-in-out infinite;
 }
 
-.icon-1 {
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
-}
+/* Keep desktop positions */
+.icon-1 { top: 10%; left: 10%; }
+.icon-2 { top: 20%; right: 15%; }
+.icon-3 { top: 60%; left: 8%; }
+.icon-4 { bottom: 20%; right: 12%; }
+.icon-5 { bottom: 30%; right: 25%; }
 
-.icon-2 {
-    top: 20%;
-    right: 15%;
-    animation-delay: 1s;
-}
-
-.icon-3 {
-    top: 60%;
-    left: 8%;
-    animation-delay: 2s;
-    color: #ff6b35;
-}
-
-.icon-4 {
-    bottom: 20%;
-    right: 12%;
-    animation-delay: 1.5s;
-}
-
-.icon-5 {
-    bottom: 30%;
-    right: 25%;
-    animation-delay: 0.5s;
-    color: #61dafb;
-}
-
+/* FLOAT ANIMATION */
 @keyframes float {
     0%, 100% {
         transform: translateY(0) rotate(0deg);
@@ -556,132 +527,92 @@ spline-viewer {
     }
 }
 
+/* ------------------------------- */
+/* 📱 MOBILE FIXES - BELOW 600px   */
+/* ------------------------------- */
 
+@media (max-width: 600px) {
 
+  .uiux {
+    font-size: 26vw;
+    letter-spacing: 2vw;
+    margin-top: -10vw;
+  }
 
+  .light {
+    top: 22vh;
+    width: 95vw;
+    height: 55vw;
+    filter: blur(12vw);
+  }
 
+  .designer {
+    top: 58vh;
+    font-size: 13vw;
+  }
 
+  .designer-reflection {
+    top: 68vh;
+    font-size: 13vw;
+  }
 
-
-
-
-
-
-
-
+  .float-icon {
+    width: 14vw;
+    height: 14vw;
+  }
+}
 /* ===============================================
    ABOUT SECTION
    =============================================== */
+/* ================= ABOUT – ROADMAP LOGOS ON CURVE (FINAL) ================= */
 .about-section {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5rem 2rem;
-    background: linear-gradient(180deg, #0a0520 0%, #1a0f3d 100%);
+  margin-top: 160px;
+  width: 100%;
 }
-
 .about-container {
-    max-width: 1200px;
-    width: 100%;
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 2rem;
 }
-
 .about-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(3rem, 7vw, 6rem);
-    font-weight: 700;
-    margin-bottom: 3rem;
-}
-
-.about-icons {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    position: relative;
-}
-
-.about-icon {
-    width: 50px;
-    height: 50px;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-    color: #61dafb;
-}
-
-.about-icon:nth-child(2) {
-    width: 55px;
-    height: 55px;
-}
-
-.about-icon:hover {
-    opacity: 1;
-    transform: translateY(-10px);
-}
-
-/* Dotted Lines Between Icons */
-/* Section layout */
-.roadmap {
+  font-size: 5rem;
   
+  margin-bottom: 40px;
+}
+
+/* ===== Roadmap ===== */
+.roadmap {
   position: relative;
-  width: 1000%;
+  width: 100%;
   max-width: 1000px;
   height: 300px;
-  overflow: visible;
+  margin: 0 auto;
 }
-
-/* SVG dotted path */
 .roadmap-path {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
-  animation: drawPath 5s ease-in-out forwards;
+  inset: 0;
 }
 
-/* Curved Path */
-.roadmap-path {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation: drawPath 5s ease-in-out forwards;
-}
-
-@keyframes drawPath {
-  from {
-    stroke-dashoffset: 1000;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-
-/* Icons container */
+/* ---- Logo curve + animation ---- */
 .logos {
   position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   pointer-events: none;
 }
 .logo {
-  position: relative;
   width: 70px;
   height: 70px;
   border-radius: 50%;
   overflow: hidden;
-  filter: brightness(0.5) blur(0.2px);
-  transition: all 0.6s ease;
+  transition: .4s ease;
+  filter: brightness(.75);
 }
 .logo img {
   width: 100%;
@@ -689,98 +620,79 @@ spline-viewer {
   object-fit: cover;
 }
 
-/* Position logos along curve (responsive alignment) */
-.logo:nth-child(1) {
-  align-self: flex-end;
-  transform: translateY(-50px);
-}
-.logo:nth-child(2) {
-  align-self: flex-start;
-  transform: translateY(150px);
-}
-.logo:nth-child(3) {
-  align-self: flex-end;
-  transform: translateY(-50px);
-}
-.logo:nth-child(4) {
-  align-self: center;
-  transform: translateY(-10px);
-}
-.logo:nth-child(5) {
-  align-self: flex-end;
-  transform: translateY(-50px);
-}
+/* Curve alignment desktop */
+.logo:nth-child(1) { transform: translateY(50%); }
+.logo:nth-child(2) { transform: translateY(32%); }
+.logo:nth-child(3) { transform: translateY(70%); }
+.logo:nth-child(4) { transform: translateY(-22%); }
+.logo:nth-child(5) { transform: translateY(18%); }
 
-/* Glow sequence timing (matches line drawing) */
+/* Glow animation */
 @keyframes glow {
-  0%, 20% {
-    filter: brightness(0.5) blur(0.2px);
-    box-shadow: none;
-  }
-  25%, 40% {
-    filter: brightness(1.8);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
-  }
-  45%, 100% {
-    filter: brightness(0.5);
-    box-shadow: none;
-  }
+  0%,20% { filter: brightness(.6); }
+  25%,50% { filter: brightness(1.6); box-shadow: 0 0 18px rgba(0,255,255,.85); }
+  60%,100% { filter: brightness(.6); box-shadow: none; }
 }
-.canva {
-  animation: glow 5s ease-in-out 0s infinite;
-}
-.figma {
-  animation: glow 5s ease-in-out 1s infinite;
-}
-.blender {
-  animation: glow 5s ease-in-out 2s infinite;
-}
-.ps {
-  animation: glow 5s ease-in-out 3s infinite;
-}
-.ai {
-  animation: glow 5s ease-in-out 4s infinite;
-}
+.canva   { animation: glow 5s 0s infinite ease-in-out; }
+.figma   { animation: glow 5s 1s infinite ease-in-out; }
+.blender { animation: glow 5s 2s infinite ease-in-out; }
+.ps      { animation: glow 5s 3s infinite ease-in-out; }
+.ai      { animation: glow 5s 4s infinite ease-in-out; }
 
+/* ===== Glass Box Text ===== */
+.about-content-box {
+  margin-top: 3rem;
+  max-width: 1000px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.about-text {
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  line-height: 1.65;
+}
+/* Tablet */
 @media (max-width: 992px) {
   .logo {
-    width: 8vw;
+    width: 60px;
+    height: 60px;
   }
 }
+
+/* Mobile */
 @media (max-width: 768px) {
-  .roadmap {
-    aspect-ratio: 4 / 2;
-  }
   .logo {
-    width: 10vw;
+    width: 48px;
+    height: 48px;
   }
+
+  /* adjust curve alignment slightly */
+  .logo:nth-child(1) { transform: translateY(60%); }
+  .logo:nth-child(2) { transform: translateY(69%); }
+  .logo:nth-child(3) { transform: translateY(100%); }
+  .logo:nth-child(4) { transform: translateY(-50%); }
+  .logo:nth-child(5) { transform: translateY(65%); }
 }
+
+/* Small Phones */
 @media (max-width: 480px) {
-  .roadmap {
-    aspect-ratio: 5 / 3;
-  }
   .logo {
-    width: 14vw;
+    width: 40px;
+    height: 40px;
+  }
+
+  .roadmap {
+    height: 190px; /* makes curve fit perfectly */
   }
 }
-.about-content-box {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 3rem;
-}
 
-.about-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 1.5rem;
-}
 
-.about-text:last-child {
-    margin-bottom: 0;
-}
+
 
 /* ===============================================
    SKILLS SECTION
@@ -800,6 +712,7 @@ spline-viewer {
     width: 100%;
 }
 
+/* Title */
 .skills-title {
     font-family: 'Orbitron', sans-serif;
     font-size: clamp(2.5rem, 6vw, 5rem);
@@ -817,50 +730,56 @@ spline-viewer {
     color: #fff;
 }
 
+/* FLEX layout for scattered capsules */
 .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 2rem;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-/* Glassy Skill Box */
+/* Capsule shape — same size on all devices */
 .skill-item {
+    width: 240px;
+    min-height: 55px;
+    border-radius: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    font-size: 1.1rem;
+    color: #fff;
+    cursor: pointer;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 40px;
-    padding: 1.2rem 2rem;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: #fff;
     backdrop-filter: blur(10px) saturate(180%);
     -webkit-backdrop-filter: blur(10px) saturate(180%);
+    transition: all 0.35s ease;
     box-shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
-    cursor: pointer;
 }
 
-/* Hover glow (same as before, but more glassy) */
+/* Hover */
 .skill-item:hover {
+    transform: scale(1.05) rotate(0deg);
     background: rgba(192, 132, 252, 0.15);
     border-color: rgba(192, 132, 252, 0.4);
     box-shadow: 0 10px 30px rgba(192, 132, 252, 0.25);
-    transform: scale(1.05);
 }
 
-/* Fade Animation (unchanged) */
+/* Random tilt for scattered effect */
+.skill-item:nth-child(odd) { transform: rotate(-4deg); }
+.skill-item:nth-child(even) { transform: rotate(4deg); }
+
+/* Fade animation */
 @keyframes fadeText {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+.fade { animation: fadeText 5s ease-in-out infinite; }
 
-.fade {
-    animation: fadeText 5s ease-in-out infinite;
-}
-
-/* Staggered fade timing */
+/* Delays */
 .fade:nth-child(2) { animation-delay: 0.5s; }
 .fade:nth-child(3) { animation-delay: 1s; }
 .fade:nth-child(4) { animation-delay: 1.5s; }
@@ -871,6 +790,27 @@ spline-viewer {
 .fade:nth-child(9) { animation-delay: 4s; }
 .fade:nth-child(10) { animation-delay: 4.5s; }
 .fade:nth-child(11) { animation-delay: 5s; }
+
+/* ---------- RESPONSIVE (same scattered layout) ---------- */
+@media (max-width: 768px) {
+  .skills-section { padding: 3rem 1rem; }
+  .skills-grid { gap: 1.5rem; }
+  .skill-item {
+    width: 200px;
+    min-height: 48px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid { gap: 1.2rem; }
+  .skill-item {
+    width: 180px;
+    min-height: 44px;
+    font-size: 0.85rem;
+  }
+}
+
 /* ===============================================
    PROJECTS SECTION
    =============================================== */
@@ -887,7 +827,6 @@ spline-viewer {
   animation: bgShift 12s ease-in-out infinite alternate;
 }
 
-/* Animated gradient background */
 @keyframes bgShift {
   0% { background: linear-gradient(180deg, #1a0f3d 0%, #2a1850 100%); }
   50% { background: linear-gradient(180deg, #2a1850 0%, #3e2370 100%); }
@@ -910,16 +849,15 @@ spline-viewer {
   animation: glowPulse 3s ease-in-out infinite alternate;
 }
 
-/* Title glow */
 @keyframes glowPulse {
   0% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
   100% { filter: drop-shadow(0 0 30px rgba(192,132,252,0.5)); }
 }
 
-/* Carousel container */
 .carousel3d {
   perspective: 1300px;
-  width: 80%;
+  width: 100%;
+  max-width: 900px;
   height: 420px;
   position: relative;
   margin: 0 auto;
@@ -944,7 +882,6 @@ spline-viewer {
   100% { transform: translate(-10%, 10%) scale(0.9); opacity: 0.8; }
 }
 
-/* track centered in 3D space */
 .carousel-track {
   position: absolute;
   left: 50%;
@@ -955,7 +892,6 @@ spline-viewer {
   z-index: 1;
 }
 
-/* project cards */
 .project-card {
   position: absolute;
   left: 50%;
@@ -972,7 +908,6 @@ spline-viewer {
   transition: box-shadow 0.25s linear, transform 0.4s ease;
 }
 
-/* Shimmer animation applied automatically */
 .project-card::after {
   content: "";
   position: absolute;
@@ -986,7 +921,6 @@ spline-viewer {
   animation: shimmer 6s linear infinite;
 }
 
-/* Each card gets delayed shimmer so they don’t all glow together */
 .project-card:nth-child(1)::after { animation-delay: 0s; }
 .project-card:nth-child(2)::after { animation-delay: 1s; }
 .project-card:nth-child(3)::after { animation-delay: 2s; }
@@ -1001,7 +935,6 @@ spline-viewer {
   100% { transform: translateX(150%) rotate(25deg); opacity: 0; }
 }
 
-/* image and title styling */
 .project-card img { width:100%; height:100%; object-fit:cover; display:block; }
 .project-card h3 {
   position:absolute;
@@ -1015,13 +948,26 @@ spline-viewer {
   text-align:center;
 }
 
-/* fixed circular layout */
+/* Fixed circular layout */
 .project-card:nth-child(1) { transform: rotateY(0deg)   translateZ(550px) translate(-50%,-50%); }
 .project-card:nth-child(2) { transform: rotateY(60deg)  translateZ(550px) translate(-50%,-50%); }
 .project-card:nth-child(3) { transform: rotateY(120deg) translateZ(550px) translate(-50%,-50%); }
 .project-card:nth-child(4) { transform: rotateY(180deg) translateZ(550px) translate(-50%,-50%); }
 .project-card:nth-child(5) { transform: rotateY(240deg) translateZ(550px) translate(-50%,-50%); }
 .project-card:nth-child(6) { transform: rotateY(300deg) translateZ(550px) translate(-50%,-50%); }
+
+/* ---------------- RESPONSIVE FIX ---------------- */
+@media (max-width: 768px) {
+  .carousel3d { height: 350px; }
+  .project-card { width: 220px; height: 155px; }
+  .projects-title { font-size: 2.2rem; }
+}
+
+@media (max-width: 480px) {
+  .carousel3d { height: 300px; }
+  .project-card { width: 190px; height: 135px; }
+  .carousel-track { transform: translate(-50%, -50%) rotateY(0deg) scale(0.82); }
+}
 
 /* ===============================================
    CONTACT SECTION
